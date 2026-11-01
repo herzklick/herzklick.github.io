@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HerzKlick – Liebesbriefe & Überraschungen als Link</title>
+<meta name="description" content="Persönliche Liebesbriefe, Geburtstagsüberraschungen und Anträge als Link. Ab 12 €, fertig in 24 Stunden, du siehst die Vorschau zuerst.">
+<meta property="og:title" content="HerzKlick – Liebesbriefe als Link 💌">
+<meta property="og:description" content="Eine Überraschung, die man mit einem Klick öffnet. Ab 12 €.">
+<meta property="og:image" content="assets/logo.png">
+<meta name="theme-color" content="#F6EFE7">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500;1,9..144,700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F6EFE7; --cream-2: #EFE3D6; --paper: #FFFBF6;
+    --red: #B23A48; --red-2: #8E2A37; --ink: #2B1B1E; --ink-soft: #6E5A5D; --line: rgba(43,27,30,.12);
+    --ease: cubic-bezier(.2,.7,.2,1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font: 400 17px/1.65 "Jost", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  .wrap { width: min(1080px, 100% - 32px); margin: 0 auto; }
+  h1, h2, h3 { font-family: "Fraunces", serif; font-weight: 700; line-height: 1.12; letter-spacing: -.01em; }
+  em { font-style: italic; color: var(--red); }
+
+  /* nav */
+  .nav { position: sticky; top: 0; z-index: 20; background: rgba(246,239,231,.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 62px; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: "Fraunces", serif; font-size: 22px; font-weight: 700; }
+  .brand img { width: 36px; height: 36px; border-radius: 50%; }
+  .brand b { color: var(--red); font-style: italic; }
+  .nav nav { display: flex; gap: 22px; font-size: 15px; }
+  .nav nav a { text-decoration: none; color: var(--ink-soft); }
+  .nav nav a:hover { color: var(--ink); }
+  @media (max-width: 700px) { .nav nav { display: none; } }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 0 24px; border-radius: 999px; font: 600 16px "Jost", sans-serif; text-decoration: none; border: 0; cursor: pointer; transition: transform .2s var(--ease), background .2s; }
+  .btn:active { transform: scale(.97); }
+  .btn.red { background: var(--red); color: #fff; }
+  .btn.red:hover { background: var(--red-2); }
+  .btn.line { border: 1.5px solid var(--ink); color: var(--ink); background: transparent; }
+  .btn.sm { min-height: 42px; padding: 0 18px; font-size: 15px; }
+
+  /* hero */
+  .hero { padding: 64px 0 40px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
+  .eyebrow { display: inline-block; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); font-weight: 600; margin-bottom: 14px; }
+  .hero h1 { font-size: clamp(40px, 7vw, 68px); }
+  .hero p.lead { font-size: 19px; color: var(--ink-soft); margin: 18px 0 26px; max-width: 34ch; }
+  .hero .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .ticks { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 22px; font-size: 15px; color: var(--ink-soft); list-style: none; }
+  .ticks li::before { content: "✓"; color: var(--red); font-weight: 700; margin-right: 6px; }
+  .phones { position: relative; height: 520px; }
+  .phone { position: absolute; width: 230px; border-radius: 34px; padding: 9px; background: #1d1416; box-shadow: 0 30px 60px -20px rgba(43,27,30,.45); }
+  .phone img { border-radius: 26px; aspect-ratio: 390/844; object-fit: cover; width: 100%; }
+  .phone.a { left: 4%; top: 30px; transform: rotate(-6deg); }
+  .phone.b { right: 4%; top: 0; transform: rotate(5deg); }
+  @media (max-width: 820px) {
+    .hero { padding-top: 36px; }
+    .hero .wrap { grid-template-columns: 1fr; }
+    .phones { height: 400px; }
+    .phone { width: 175px; }
+  }
+
+  section { padding: 72px 0; }
+  .head { text-align: center; max-width: 620px; margin: 0 auto 40px; }
+  .head h2 { font-size: clamp(32px, 5vw, 46px); }
+  .head p { color: var(--ink-soft); margin-top: 10px; }
+
+  /* examples */
+  .ex { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; }
+  .card .shots { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 18px 18px 0; background: var(--cream-2); }
+  .card .shots img { border-radius: 16px 16px 0 0; aspect-ratio: 390/600; object-fit: cover; object-position: top; }
+  .card .txt { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .card h3 { font-size: 26px; }
+  .card p { color: var(--ink-soft); font-size: 16px; flex: 1; }
+  .card .btn { align-self: flex-start; }
+  .soon { background: transparent; border-style: dashed; justify-content: center; align-items: center; text-align: center; padding: 28px; min-height: 160px; grid-column: 1 / -1; }
+  .soon p { color: var(--ink-soft); }
+  @media (max-width: 760px) { .ex { grid-template-columns: 1fr; } }
+
+  /* steps */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: s; list-style: none; }
+  .steps li { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: 22px 20px; counter-increment: s; }
+  .steps li::before { content: counter(s); display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--red); color: #fff; font: 700 18px "Fraunces", serif; margin-bottom: 12px; }
+  .steps h3 { font-size: 20px; margin-bottom: 4px; }
+  .steps p { color: var(--ink-soft); font-size: 15px; }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .steps { grid-template-columns: 1fr; } }
+
+  /* prices */
+  .dark { background: var(--ink); color: var(--cream); }
+  .dark .head p { color: rgba(246,239,231,.7); }
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
+  .plan { position: relative; border-radius: 26px; padding: 28px 24px; background: rgba(246,239,231,.06); border: 1px solid rgba(246,239,231,.14); display: flex; flex-direction: column; }
+  .plan.top { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+  .plan .tag { position: absolute; top: -13px; left: 24px; background: var(--red); color: #fff; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; }
+  .plan h3 { font-size: 24px; }
+  .plan .price { font: 700 52px/1 "Fraunces", serif; margin: 14px 0 4px; }
+  .plan .price small { font-size: 22px; }
+  .plan .for { font-size: 14px; opacity: .7; margin-bottom: 16px; }
+  .plan ul { list-style: none; display: grid; gap: 8px; font-size: 15px; flex: 1; margin-bottom: 22px; }
+  .plan li::before { content: "♥"; color: var(--red); margin-right: 8px; font-size: 13px; }
+  .plan:not(.top) .btn { background: transparent; border: 1.5px solid rgba(246,239,231,.6); color: var(--cream); }
+  .pay { text-align: center; margin-top: 26px; font-size: 15px; color: rgba(246,239,231,.75); }
+  @media (max-width: 860px) { .plans { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; } }
+
+  /* faq */
+  .faq { max-width: 720px; margin: 0 auto; display: grid; gap: 12px; }
+  .faq details { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 4px 20px; }
+  .faq summary { cursor: pointer; list-style: none; font-weight: 600; padding: 14px 0; display: flex; justify-content: space-between; gap: 12px; }
+  .faq summary::after { content: "+"; color: var(--red); font-size: 22px; line-height: 1; transition: transform .2s; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq details p { color: var(--ink-soft); padding-bottom: 16px; font-size: 16px; }
+
+  /* order */
+  .order { text-align: center; background: var(--red); color: #fff; border-radius: 32px; padding: 52px 24px; }
+  .order h2 { font-size: clamp(32px, 5vw, 46px); }
+  .order p { opacity: .85; margin: 12px auto 26px; max-width: 44ch; }
+  .order .btn { background: #fff; color: var(--red); }
+
+  footer { padding: 40px 0 calc(40px + env(safe-area-inset-bottom)); font-size: 14px; color: var(--ink-soft); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+  footer nav { display: flex; gap: 18px; }
+
+  .rv { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .rv.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/logo.png" alt=""><span>Herz<b>Klick</b></span></a>
+    <nav><a href="#beispiele">Beispiele</a><a href="#so-gehts">So geht's</a><a href="#preise">Preise</a><a href="#faq">FAQ</a></nav>
+    <a class="btn red sm" href="#bestellen">Bestellen</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Liebesbrief als Link</span>
+        <h1>Eine Überraschung, die man mit <em>einem Klick</em> öffnet.</h1>
+        <p class="lead">Wir gestalten eine persönliche Seite nur für sie oder ihn: mit euren Namen, euren Worten und eurer Geschichte. Du schickst einfach den Link.</p>
+        <div class="cta">
+          <a class="btn red" href="#bestellen">Jetzt bestellen</a>
+          <a class="btn line" href="#beispiele">Beispiele ansehen</a>
+        </div>
+        <ul class="ticks"><li>ab 12 €</li><li>fertig in 24 Std.</li><li>erst Vorschau, dann zahlen</li></ul>
+      </div>
+      <div class="phones" aria-hidden="true">
+        <div class="phone a"><img src="assets/brief-offen.jpg" alt=""></div>
+        <div class="phone b"><img src="assets/geb-torte.jpg" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="beispiele">
+    <div class="wrap">
+      <div class="head rv"><h2>Beispiele</h2><p>Öffne sie auf deinem Handy, genau so sieht es die Person, die du überraschst.</p></div>
+      <div class="ex">
+        <article class="card rv">
+          <div class="shots"><img src="assets/brief-zu.jpg" alt="Umschlag mit Herz-Siegel"><img src="assets/brief-offen.jpg" alt="Liebesbrief, der sich Wort für Wort schreibt"></div>
+          <div class="txt">
+            <h3>Liebesbrief</h3>
+            <p>Ein Umschlag mit ihrem Namen. Ein Tipp aufs Herz, und dein Brief schreibt sich Wort für Wort. Dazu: wie lange ihr zusammen seid, warum du sie liebst, eure Geschichte und kleine Briefe für „Öffne mich, wenn …“.</p>
+            <a class="btn red sm" href="beispiel/liebesbrief/" target="_blank" rel="noopener">Beispiel öffnen</a>
+          </div>
+        </article>
+        <article class="card rv">
+          <div class="shots"><img src="assets/geb-torte.jpg" alt="Geburtstagstorte mit Kerzen"><img src="assets/geb-seite.jpg" alt="Geburtstagsseite"></div>
+          <div class="txt">
+            <h3>Geburtstag</h3>
+            <p>Ein Geschenk zum Antippen, dann geht das Licht aus und eine Torte erscheint. Sie pustet ins Handy und die Kerzen gehen aus. Danach: deine Nachricht, Grüße von Freunden und Gutscheine zum Freirubbeln.</p>
+            <a class="btn red sm" href="beispiel/geburtstag/" target="_blank" rel="noopener">Beispiel öffnen</a>
+          </div>
+        </article>
+        <div class="card soon rv"><p><b>Bald:</b> Heiratsantrag 💍 · Jahrestag · Entschuldigung. Du hast eine eigene Idee? Schreib uns, wir machen fast alles möglich.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="so-gehts">
+    <div class="wrap">
+      <div class="head rv"><h2>So geht's</h2><p>Du brauchst nichts zu können. Erzähl uns einfach, was du sagen willst.</p></div>
+      <ol class="steps">
+        <li class="rv"><h3>Schreib uns</h3><p>Per Instagram: für wen, welcher Anlass und ein paar Worte von dir.</p></li>
+        <li class="rv"><h3>Wir gestalten</h3><p>Wir bauen die Seite und helfen dir gern beim Text.</p></li>
+        <li class="rv"><h3>Vorschau</h3><p>Du bekommst ein Video deiner Seite und kannst Änderungen wünschen.</p></li>
+        <li class="rv"><h3>Bezahlen & Link</h3><p>Erst wenn alles passt, zahlst du und bekommst den Link + QR-Code.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="preise" class="dark">
+    <div class="wrap">
+      <div class="head rv"><h2>Preise</h2><p>Einmal zahlen, die Seite bleibt online. Keine Abos, keine versteckten Kosten.</p></div>
+      <div class="plans">
+        <div class="plan rv">
+          <h3>Basic</h3>
+          <div class="price">12 <small>€</small></div>
+          <p class="for">Für eine schnelle, liebe Geste</p>
+          <ul><li>Persönliche Seite mit Namen</li><li>Dein Text, Wort für Wort animiert</li><li>Fertig in 24 Stunden</li></ul>
+          <a class="btn sm" href="#bestellen">Basic wählen</a>
+        </div>
+        <div class="plan top rv">
+          <span class="tag">Beliebt</span>
+          <h3>Plus</h3>
+          <div class="price">19 <small>€</small></div>
+          <p class="for">Die ganze Geschichte</p>
+          <ul><li>Alles aus Basic</li><li>Eure Fotos & eure Geschichte</li><li>Zähler seit eurem ersten Tag</li><li>Musik</li><li>Antwort-Button per WhatsApp</li></ul>
+          <a class="btn red sm" href="#bestellen">Plus wählen</a>
+        </div>
+        <div class="plan rv">
+          <h3>Premium</h3>
+          <div class="price">29 <small>€</small></div>
+          <p class="for">Die große Überraschung</p>
+          <ul><li>Alles aus Plus</li><li>Passwort, das nur ihr kennt 🔒</li><li>Extra-Bereiche nach Wunsch</li><li>Express: am selben Tag fertig</li></ul>
+          <a class="btn sm" href="#bestellen">Premium wählen</a>
+        </div>
+      </div>
+      <p class="pay rv">Bezahlung mit PayPal oder Kreditkarte (Visa / Mastercard), erst nach deiner Vorschau.</p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="head rv"><h2>Fragen & Antworten</h2></div>
+      <div class="faq">
+        <details class="rv"><summary>Wie lange dauert es?</summary><p>Normalerweise ist deine Seite innerhalb von 24 Stunden fertig. Mit Premium noch am selben Tag.</p></details>
+        <details class="rv"><summary>Muss ich vorher bezahlen?</summary><p>Nein. Du bekommst zuerst ein Vorschau-Video deiner Seite. Erst wenn sie dir gefällt, bezahlst du und bekommst den Link.</p></details>
+        <details class="rv"><summary>Wie bezahle ich?</summary><p>Bequem mit PayPal oder mit Kreditkarte (Visa / Mastercard) über einen PayPal-Link, auch ohne PayPal-Konto.</p></details>
+        <details class="rv"><summary>Kann ich Fotos und Musik hinzufügen?</summary><p>Ja, ab dem Plus-Paket. Schick uns einfach die Fotos und sag uns, welches Lied euer Lied ist.</p></details>
+        <details class="rv"><summary>Ich weiß nicht, was ich schreiben soll …</summary><p>Kein Problem. Erzähl uns ein bisschen über euch, und wir schreiben den Text für dich. Du kannst ihn danach noch ändern.</p></details>
+        <details class="rv"><summary>Wie lange bleibt die Seite online?</summary><p>Dauerhaft. Sie kann den Link immer wieder öffnen, so oft sie will.</p></details>
+        <details class="rv"><summary>Wer kann die Seite sehen?</summary><p>Nur wer den Link hat. Die Seite wird nicht bei Google angezeigt. Mit Premium schützt zusätzlich ein Passwort.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="bestellen">
+    <div class="wrap">
+      <div class="order rv">
+        <h2>Bereit für deine Überraschung?</h2>
+        <p>Schreib uns auf Instagram, für wen sie ist und zu welchem Anlass. Wir melden uns schnell mit allen Details.</p>
+        <a class="btn" href="https://ig.me/m/herzklick.studio" target="_blank" rel="noopener">💌 Auf Instagram schreiben</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 HerzKlick · <a href="https://instagram.com/herzklick.studio" target="_blank" rel="noopener">@herzklick.studio</a></span>
+    <nav><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav>
+  </div>
+</footer>
+
+<script>
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' }) : null;
+  document.querySelectorAll('.rv').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+</script>
+</body>
+</html>
